@@ -1136,8 +1136,11 @@ export async function importAdminProducts(req, res) {
 export async function updateAdminProduct(req, res) {
   try {
     const id = req.params.id || req.body?.id;
+
     if (!id) {
-      return res.status(400).json({ error: 'ID produk diperlukan' });
+      return res.status(400).json({
+        error: 'ID produk diperlukan'
+      });
     }
 
     const {
@@ -1155,40 +1158,91 @@ export async function updateAdminProduct(req, res) {
       discountPrice
     } = req.body || {};
 
+    const existing = await prisma.product.findUnique({
+      where: { id }
+    });
+
+    if (!existing) {
+      return res.status(404).json({
+        error: 'Produk tidak ditemukan'
+      });
+    }
+
     const dataToUpdate = {};
+
     if (name !== undefined) dataToUpdate.name = name;
     if (price !== undefined) dataToUpdate.price = parseFloat(price);
     if (unit !== undefined) dataToUpdate.unit = unit;
     if (stock !== undefined) dataToUpdate.stock = parseInt(stock, 10);
     if (image !== undefined) dataToUpdate.image = image;
     if (description !== undefined) dataToUpdate.description = description;
-    if (categoryId !== undefined) {
-      dataToUpdate.categoryId = categoryId || null;
-      if (categoryId && categoryName === undefined) {
-        const cat = await prisma.category.findUnique({ where: { id: categoryId } }).catch(() => null);
-        if (cat) dataToUpdate.categoryName = cat.name;
-      }
-    }
-    if (categoryName !== undefined) {
-      dataToUpdate.categoryName = categoryName;
-      if (categoryName && categoryId === undefined) {
-        const cat = await prisma.category.findFirst({
-          where: {
-            OR: [
-              { name: { equals: categoryName, mode: 'insensitive' } },
-              { slug: { equals: categoryName, mode: 'insensitive' } }
-            ]
-          }
-        }).catch(() => null);
-        if (cat) dataToUpdate.categoryId = cat.id;
-      }
-    }
     if (status !== undefined) dataToUpdate.status = status;
     if (isFeatured !== undefined) dataToUpdate.isFeatured = Boolean(isFeatured);
     if (isPopular !== undefined) dataToUpdate.isPopular = Boolean(isPopular);
-    if (discountPrice !== undefined) dataToUpdate.discountPrice = discountPrice ? parseFloat(discountPrice) : null;
 
-    const existing = await prisma.product.findUnique({ where: { id } });
+    if (discountPrice !== undefined) {
+      dataToUpdate.discountPrice =
+        discountPrice !== '' && discountPrice !== null
+          ? parseFloat(discountPrice)
+          : null;
+    }
+
+    // Perbarui kategori hanya jika request memang mengirim perubahan kategori.
+    if (categoryId !== undefined || categoryName !== undefined) {
+      let resolvedCategory = null;
+
+      // Jika categoryId diberikan, validasi ID tersebut terlebih dahulu.
+      if (categoryId) {
+        resolvedCategory = await prisma.category.findUnique({
+          where: { id: String(categoryId) }
+        });
+
+        if (!resolvedCategory) {
+          return res.status(400).json({
+            error: `Kategori dengan ID "${categoryId}" tidak ditemukan.`
+          });
+        }
+      } else if (categoryName) {
+        const normalizedName = String(categoryName).trim();
+
+        resolvedCategory = await prisma.category.findFirst({
+          where: {
+            OR: [
+              {
+                name: {
+                  equals: normalizedName,
+                  mode: 'insensitive'
+                }
+              },
+              {
+                slug: {
+                  equals: normalizedName,
+                  mode: 'insensitive'
+                }
+              }
+            ]
+          }
+        });
+
+        if (!resolvedCategory) {
+          return res.status(400).json({
+            error: `Kategori "${normalizedName}" belum tersedia di tabel Category.`
+          });
+        }
+      } else {
+        // categoryId kosong secara eksplisit: lepaskan relasi kategori.
+        dataToUpdate.categoryId = null;
+
+        if (categoryName !== undefined) {
+          dataToUpdate.categoryName = categoryName;
+        }
+      }
+
+      if (resolvedCategory) {
+        dataToUpdate.categoryId = resolvedCategory.id;
+        dataToUpdate.categoryName = resolvedCategory.name;
+      }
+    }
 
     const updated = await prisma.product.update({
       where: { id },
@@ -1196,15 +1250,30 @@ export async function updateAdminProduct(req, res) {
       include: { category: true }
     });
 
-    if (image !== undefined && existing?.image && existing.image !== image) {
-      await handleMediaReplacement(existing.image, image, 'products').catch(() => {});
+    if (
+      image !== undefined &&
+      existing.image &&
+      existing.image !== image
+    ) {
+      await handleMediaReplacement(
+        existing.image,
+        image,
+        'products'
+      ).catch(() => {});
     }
 
     clearAllCache();
+
     return res.json(updated);
   } catch (error) {
     console.error('updateAdminProduct error:', error);
-    return res.status(500).json({ error: 'Gagal memperbarui produk' });
+
+    return res.status(500).json({
+      error: 'Gagal memperbarui produk',
+      detail: error.code === 'P2003'
+        ? 'Relasi kategori atau data terkait tidak valid.'
+        : error.message
+    });
   }
 }
 
