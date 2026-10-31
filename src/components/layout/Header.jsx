@@ -136,7 +136,7 @@ function Header({
               className="flex items-center cursor-pointer select-none group shrink-0"
             >
               <img
-                src="public/images/logo-tanico.png"
+                src="images/logo-tanico.png"
                 alt="TaniCo Pure Harvest"
                 className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-90 transition-opacity"
                 loading="eager"
@@ -518,7 +518,7 @@ function Header({
               >
                 <div className="flex items-center justify-between border-b border-[#DDE9DF] pb-5 mb-6">
                   <img
-                    src="public/images/logo-tanico.png"
+                    src="images/logo-tanico.png"
                     alt="TaniCo Pure Harvest"
                     className="h-10 w-auto object-contain"
                     loading="lazy"

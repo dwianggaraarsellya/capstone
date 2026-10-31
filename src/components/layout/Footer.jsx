@@ -62,7 +62,7 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
                 className="cursor-pointer group flex items-center justify-center lg:justify-start"
               >
                 <img
-                  src="public/images/logo-tanico.png"
+                  src="images/logo-tanico.png"
                   alt="TaniCo Pure Harvest"
                   className="h-11 sm:h-12 w-auto object-contain transition-opacity duration-300 group-hover:opacity-85"
                   loading="lazy"
