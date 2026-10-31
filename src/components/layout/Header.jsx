@@ -4,11 +4,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { 
-  ShoppingCart, 
-  Search, 
-  X, 
-  User, 
+import {
+  ShoppingCart,
+  Search,
+  X,
+  User,
   Menu,
   ShieldCheck
 } from 'lucide-react';
@@ -60,7 +60,7 @@ function Header({
           const sp = new URLSearchParams(window.location.search);
           return sp.get('search') || sp.get('q') || '';
         }
-      } catch (_) {}
+      } catch (_) { }
       return '';
     };
 
@@ -116,32 +116,32 @@ function Header({
   }, []);
 
   return (
-    <header 
-      id="main-navigation-bar" 
+    <header
+      id="main-navigation-bar"
       suppressHydrationWarning
       style={{ backgroundColor: '#FCFCFC' }}
-      className={`${jost.className} font-jost sticky top-0 z-[100] w-full bg-[#FCFCFC] backdrop-blur-xl border-b transition-all duration-300 ${
-        scrolled 
-          ? 'py-2.5 sm:py-3 border-[#DDE9DF] shadow-[0_10px_30px_rgba(0,0,0,0.015)]' 
-          : 'py-3.5 sm:py-5 border-[#DDE9DF]/10'
-      }`}
+      className={`${jost.className} font-jost sticky top-0 z-[100] w-full bg-[#FCFCFC] backdrop-blur-xl border-b transition-all duration-300 ${scrolled
+        ? 'py-2.5 sm:py-3 border-[#DDE9DF] shadow-[0_10px_30px_rgba(0,0,0,0.015)]'
+        : 'py-3.5 sm:py-5 border-[#DDE9DF]/10'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between gap-6">
-          
+
           {/* KIRI: Logo + Navigasi Desktop */}
           <div className="flex items-center gap-8 xl:gap-10 flex-1 min-w-0">
-            <Link 
+            <Link
               href="/"
               prefetch={true}
-              className="flex flex-col cursor-pointer select-none group shrink-0 text-left"
+              className="flex items-center cursor-pointer select-none group shrink-0"
             >
-              <span className="text-[21px] sm:text-[25px] font-semibold text-[#1B4D3E] tracking-[0.03em] leading-none group-hover:opacity-90 transition-opacity">
-                TaniCo
-              </span>
-              <span className="text-[7px] sm:text-[9px] tracking-[0.2em] text-[#6B7280] uppercase font-medium mt-1 group-hover:text-[#1B4D3E] transition-colors duration-300">
-                PURE HARVEST
-              </span>
+              <img
+                src="public/images/logo-tanico.png"
+                alt="TaniCo Pure Harvest"
+                className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-90 transition-opacity"
+                loading="eager"
+                decoding="async"
+              />
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8 xl:gap-10 font-jost text-[16px] font-medium text-[#666666]">
@@ -151,17 +151,16 @@ function Header({
                 { label: 'Kategori', href: '/categories', active: activePath === '/categories' || activePath === '/kategori' || activePath.startsWith('/categories/') || activePath.startsWith('/kategori/') },
                 { label: 'Kontak', href: '/contact', active: activePath === '/contact' || activePath === '/hubungi-kami' || activePath.startsWith('/contact/') || activePath.startsWith('/hubungi-kami/') }
               ].map((item, idx) => (
-                <Link 
+                <Link
                   key={idx}
                   href={item.href}
                   prefetch={true}
-                  className={`group relative py-2 tracking-wide transition-colors duration-300 ${
-                    item.active ? 'text-[#1B4D3E] font-semibold' : 'hover:text-[#1B4D3E]'
-                  }`}
+                  className={`group relative py-2 tracking-wide transition-colors duration-300 ${item.active ? 'text-[#1B4D3E] font-semibold' : 'hover:text-[#1B4D3E]'
+                    }`}
                 >
                   <span>{item.label}</span>
                   {item.active ? (
-                    <span 
+                    <span
                       className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#1B4D3E] rounded-full"
                     />
                   ) : (
@@ -175,7 +174,7 @@ function Header({
           {/* KANAN: Search + Actions (Desktop) */}
           <div className="hidden lg:flex items-center gap-6 shrink-0">
             <div className="relative w-56 xl:w-72 h-[46px] group shrink">
-              <button 
+              <button
                 type="button"
                 onClick={triggerSearch}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-[#666666] hover:text-[#1B4D3E] cursor-pointer transition-colors"
@@ -197,7 +196,7 @@ function Header({
                 className="w-full h-full bg-white text-sm text-[#111111] placeholder-[#666666]/50 pl-11 pr-10 border border-[#DDE9DF] focus:border-[#1B4D3E] hover:border-[#1B4D3E]/40 rounded-full transition-all duration-300 outline-none font-jost"
               />
               {localSearch && (
-                <button 
+                <button
                   type="button"
                   onClick={() => {
                     setLocalSearch('');
@@ -230,110 +229,110 @@ function Header({
               </button>
 
               <div suppressHydrationWarning className="flex items-center">
-              {mounted && currentUser ? (
-                <div 
-                  className="relative"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsOpen(!isOpen);
-                    }}
-                    className="flex items-center cursor-pointer p-0.5 rounded-full ring-2 ring-transparent hover:ring-[#1B4D3E]/30 transition-all duration-300"
-                    aria-label="Menu Akun"
+                {mounted && currentUser ? (
+                  <div
+                    className="relative"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    {currentUser.avatar && currentUser.avatar.trim() !== '' ? (
-                      <img 
-                        src={currentUser.avatar || null} 
-                        alt={currentUser.name} 
-                        loading="lazy"
-                        decoding="async"
-                        className="w-8 h-8 rounded-full object-cover border border-gray-100"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/5 flex items-center justify-center text-[#1B4D3E] font-semibold text-xs border border-[#DDE9DF] font-jost">
-                        {(() => {
-                          const name = currentUser.name || currentUser.email || '';
-                          const parts = name.trim().split(/\s+/);
-                          if (parts.length === 0) return 'U';
-                          if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
-                          return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-                        })()}
-                      </div>
-                    )}
-                  </button>
-                  
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        className="absolute right-0 top-full pt-2 w-56 z-50 font-jost"
-                      >
-                        <div className="bg-white/95 backdrop-blur-md border border-[#DDE9DF] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-2 rounded-xl overflow-hidden text-left">
-                          <div className="px-3 py-2 border-b border-[#DDE9DF] mb-1">
-                            <p className="text-sm font-semibold text-[#111111] truncate">{currentUser.name || currentUser.username || currentUser.email || ''}</p>
-                            <p className="text-xs text-[#666666] truncate mt-0.5">{currentUser.email}</p>
-                          </div>
-                          <Link
-                            href="/account"
-                            prefetch={true}
-                            onClick={() => setIsOpen(false)}
-                            className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
-                          >
-                            Akun Saya
-                          </Link>
-                          <Link
-                            href="/account/transactions"
-                            prefetch={true}
-                            onClick={() => setIsOpen(false)}
-                            className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
-                          >
-                            Riwayat Pesanan
-                          </Link>
-                          {(
-                            (currentUser?.role === 'ADMIN' || currentUser?.role === 'SUPER_ADMIN' || currentUser?.role?.name === 'ADMIN' || currentUser?.role?.name === 'SUPER_ADMIN')
-                          ) && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsOpen(!isOpen);
+                      }}
+                      className="flex items-center cursor-pointer p-0.5 rounded-full ring-2 ring-transparent hover:ring-[#1B4D3E]/30 transition-all duration-300"
+                      aria-label="Menu Akun"
+                    >
+                      {currentUser.avatar && currentUser.avatar.trim() !== '' ? (
+                        <img
+                          src={currentUser.avatar || null}
+                          alt={currentUser.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-8 h-8 rounded-full object-cover border border-gray-100"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="w-8 h-8 rounded-full bg-[#1B4D3E]/5 flex items-center justify-center text-[#1B4D3E] font-semibold text-xs border border-[#DDE9DF] font-jost">
+                          {(() => {
+                            const name = currentUser.name || currentUser.email || '';
+                            const parts = name.trim().split(/\s+/);
+                            if (parts.length === 0) return 'U';
+                            if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+                            return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+                          })()}
+                        </div>
+                      )}
+                    </button>
+
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                          onMouseEnter={handleMouseEnter}
+                          onMouseLeave={handleMouseLeave}
+                          className="absolute right-0 top-full pt-2 w-56 z-50 font-jost"
+                        >
+                          <div className="bg-white/95 backdrop-blur-md border border-[#DDE9DF] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-2 rounded-xl overflow-hidden text-left">
+                            <div className="px-3 py-2 border-b border-[#DDE9DF] mb-1">
+                              <p className="text-sm font-semibold text-[#111111] truncate">{currentUser.name || currentUser.username || currentUser.email || ''}</p>
+                              <p className="text-xs text-[#666666] truncate mt-0.5">{currentUser.email}</p>
+                            </div>
                             <Link
-                              href="/admin/dashboard"
+                              href="/account"
                               prefetch={true}
                               onClick={() => setIsOpen(false)}
-                              className="w-full block text-left px-3 py-2 text-xs text-[#174C3C] hover:bg-[#1B4D3E]/10 rounded-lg cursor-pointer font-bold transition-colors flex items-center gap-1.5"
+                              className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
                             >
-                              <ShieldCheck className="w-3.5 h-3.5" />
-                              <span>Konsol Admin</span>
+                              Akun Saya
                             </Link>
-                          )}
-                          <button
-                            onClick={() => {
-                              setIsOpen(false);
-                              if (onLogout) onLogout();
-                            }}
-                            className="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 rounded-lg cursor-pointer font-semibold mt-1 pt-2 border-t border-[#DDE9DF] transition-colors"
-                          >
-                            Keluar
-                          </button>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <button
-                  onClick={onOpenAuth}
-                  className="p-2.5 text-[#111111] hover:text-[#1B4D3E] hover:bg-[#1B4D3E]/5 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer"
-                  aria-label="Masuk"
-                >
-                  <User className="w-5 h-5" strokeWidth={1.5} />
-                </button>
-              )}
+                            <Link
+                              href="/account/transactions"
+                              prefetch={true}
+                              onClick={() => setIsOpen(false)}
+                              className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
+                            >
+                              Riwayat Pesanan
+                            </Link>
+                            {(
+                              (currentUser?.role === 'ADMIN' || currentUser?.role === 'SUPER_ADMIN' || currentUser?.role?.name === 'ADMIN' || currentUser?.role?.name === 'SUPER_ADMIN')
+                            ) && (
+                                <Link
+                                  href="/admin/dashboard"
+                                  prefetch={true}
+                                  onClick={() => setIsOpen(false)}
+                                  className="w-full block text-left px-3 py-2 text-xs text-[#174C3C] hover:bg-[#1B4D3E]/10 rounded-lg cursor-pointer font-bold transition-colors flex items-center gap-1.5"
+                                >
+                                  <ShieldCheck className="w-3.5 h-3.5" />
+                                  <span>Konsol Admin</span>
+                                </Link>
+                              )}
+                            <button
+                              onClick={() => {
+                                setIsOpen(false);
+                                if (onLogout) onLogout();
+                              }}
+                              className="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 rounded-lg cursor-pointer font-semibold mt-1 pt-2 border-t border-[#DDE9DF] transition-colors"
+                            >
+                              Keluar
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <button
+                    onClick={onOpenAuth}
+                    className="p-2.5 text-[#111111] hover:text-[#1B4D3E] hover:bg-[#1B4D3E]/5 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer"
+                    aria-label="Masuk"
+                  >
+                    <User className="w-5 h-5" strokeWidth={1.5} />
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -357,87 +356,87 @@ function Header({
 
             {/* Profile / User */}
             <div suppressHydrationWarning className="flex items-center">
-            {mounted && currentUser ? (
-              <div className="relative">
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="flex items-center cursor-pointer p-0.5 rounded-full ring-2 ring-transparent hover:ring-[#1B4D3E]/30 transition-all duration-300"
-                  aria-label="Menu Akun"
-                >
-                  {currentUser.avatar && currentUser.avatar.trim() !== '' ? (
-                    <img 
-                      src={currentUser.avatar || null} 
-                      alt={currentUser.name} 
-                      loading="lazy"
-                      decoding="async"
-                      className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-gray-100"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1B4D3E]/5 flex items-center justify-center text-[#1B4D3E] font-semibold text-[10px] sm:text-xs border border-[#DDE9DF] font-jost">
-                      {(() => {
-                        const name = currentUser.name || currentUser.email || '';
-                        const parts = name.trim().split(/\s+/);
-                        if (parts.length === 0) return 'U';
-                        if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
-                        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-                      })()}
-                    </div>
-                  )}
-                </button>
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute right-0 top-full pt-2 w-56 z-50 font-jost"
-                    >
-                      <div className="bg-white/95 backdrop-blur-md border border-[#DDE9DF] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-2 rounded-xl overflow-hidden text-left">
-                        <div className="px-3 py-2 border-b border-[#DDE9DF] mb-1">
-                          <p className="text-sm font-semibold text-[#111111] truncate">{currentUser.name || currentUser.username || currentUser.email || ''}</p>
-                          <p className="text-xs text-[#666666] truncate mt-0.5">{currentUser.email}</p>
-                        </div>
-                        <Link
-                          href="/account"
-                          prefetch={true}
-                          onClick={() => setIsOpen(false)}
-                          className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
-                        >
-                          Akun Saya
-                        </Link>
-                        <Link
-                          href="/account/transactions"
-                          prefetch={true}
-                          onClick={() => setIsOpen(false)}
-                          className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
-                        >
-                          Riwayat Pesanan
-                        </Link>
-                        <button
-                          onClick={() => {
-                            setIsOpen(false);
-                            if (onLogout) onLogout();
-                          }}
-                          className="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 rounded-lg cursor-pointer font-semibold mt-1 pt-2 border-t border-[#DDE9DF] transition-colors"
-                        >
-                          Keluar
-                        </button>
+              {mounted && currentUser ? (
+                <div className="relative">
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="flex items-center cursor-pointer p-0.5 rounded-full ring-2 ring-transparent hover:ring-[#1B4D3E]/30 transition-all duration-300"
+                    aria-label="Menu Akun"
+                  >
+                    {currentUser.avatar && currentUser.avatar.trim() !== '' ? (
+                      <img
+                        src={currentUser.avatar || null}
+                        alt={currentUser.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-gray-100"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1B4D3E]/5 flex items-center justify-center text-[#1B4D3E] font-semibold text-[10px] sm:text-xs border border-[#DDE9DF] font-jost">
+                        {(() => {
+                          const name = currentUser.name || currentUser.email || '';
+                          const parts = name.trim().split(/\s+/);
+                          if (parts.length === 0) return 'U';
+                          if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+                          return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+                        })()}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <button
-                onClick={onOpenAuth}
-                className="p-2 text-[#111111] hover:text-[#1B4D3E] hover:bg-[#1B4D3E]/5 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer"
-                aria-label="Masuk"
-              >
-                <User className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]" strokeWidth={1.5} />
-              </button>
-            )}
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute right-0 top-full pt-2 w-56 z-50 font-jost"
+                      >
+                        <div className="bg-white/95 backdrop-blur-md border border-[#DDE9DF] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-2 rounded-xl overflow-hidden text-left">
+                          <div className="px-3 py-2 border-b border-[#DDE9DF] mb-1">
+                            <p className="text-sm font-semibold text-[#111111] truncate">{currentUser.name || currentUser.username || currentUser.email || ''}</p>
+                            <p className="text-xs text-[#666666] truncate mt-0.5">{currentUser.email}</p>
+                          </div>
+                          <Link
+                            href="/account"
+                            prefetch={true}
+                            onClick={() => setIsOpen(false)}
+                            className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
+                          >
+                            Akun Saya
+                          </Link>
+                          <Link
+                            href="/account/transactions"
+                            prefetch={true}
+                            onClick={() => setIsOpen(false)}
+                            className="w-full block text-left px-3 py-2 text-xs text-[#111111] hover:bg-[#1B4D3E]/5 rounded-lg cursor-pointer font-medium transition-colors"
+                          >
+                            Riwayat Pesanan
+                          </Link>
+                          <button
+                            onClick={() => {
+                              setIsOpen(false);
+                              if (onLogout) onLogout();
+                            }}
+                            className="w-full text-left px-3 py-2 text-xs text-red-600 hover:bg-red-50 rounded-lg cursor-pointer font-semibold mt-1 pt-2 border-t border-[#DDE9DF] transition-colors"
+                          >
+                            Keluar
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <button
+                  onClick={onOpenAuth}
+                  className="p-2 text-[#111111] hover:text-[#1B4D3E] hover:bg-[#1B4D3E]/5 rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer"
+                  aria-label="Masuk"
+                >
+                  <User className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]" strokeWidth={1.5} />
+                </button>
+              )}
             </div>
 
             {/* Hamburger Button (garis tiga) */}
@@ -476,7 +475,7 @@ function Header({
               className="w-full h-full bg-white text-xs text-[#111111] placeholder-[#666666]/50 pl-10 pr-9 border border-[#DDE9DF] rounded-full transition-all duration-300 outline-none focus:border-[#1B4D3E] font-jost"
             />
             {localSearch && (
-              <button 
+              <button
                 type="button"
                 onClick={() => {
                   setLocalSearch('');
@@ -518,14 +517,13 @@ function Header({
                 className="fixed top-0 right-0 h-full w-[85%] max-w-[360px] bg-white z-[999] shadow-2xl flex flex-col p-6 sm:p-8 font-jost text-left"
               >
                 <div className="flex items-center justify-between border-b border-[#DDE9DF] pb-5 mb-6">
-                  <div className="flex flex-col">
-                    <span className="text-[22px] font-semibold text-[#1B4D3E] tracking-wide leading-none">
-                      TaniCo
-                    </span>
-                    <span className="text-[8px] tracking-[0.2em] text-[#6B7280] uppercase font-medium mt-1">
-                      PURE HARVEST
-                    </span>
-                  </div>
+                  <img
+                    src="public/images/logo-tanico.png"
+                    alt="TaniCo Pure Harvest"
+                    className="h-10 w-auto object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-2 text-[#111111] hover:text-[#1B4D3E] hover:bg-[#1B4D3E]/5 rounded-full transition-all duration-300"
@@ -538,9 +536,9 @@ function Header({
                   <div className="border-b border-[#DDE9DF] pb-6 mb-6">
                     <div className="flex items-center gap-4">
                       {currentUser.avatar && currentUser.avatar.trim() !== '' ? (
-                        <img 
-                          src={currentUser.avatar || null} 
-                          alt={currentUser.name} 
+                        <img
+                          src={currentUser.avatar || null}
+                          alt={currentUser.name}
                           loading="lazy"
                           decoding="async"
                           className="w-11 h-11 rounded-full object-cover border border-[#DDE9DF]"
@@ -604,11 +602,10 @@ function Header({
                       href={item.href}
                       prefetch={true}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center cursor-pointer py-2 px-1 text-[12px] leading-normal transition-colors duration-200 ${
-                        item.active 
-                          ? 'text-[#1B4D3E] font-semibold' 
-                          : 'text-[#666666] hover:text-[#1B4D3E] font-medium'
-                      }`}
+                      className={`flex items-center cursor-pointer py-2 px-1 text-[12px] leading-normal transition-colors duration-200 ${item.active
+                        ? 'text-[#1B4D3E] font-semibold'
+                        : 'text-[#666666] hover:text-[#1B4D3E] font-medium'
+                        }`}
                     >
                       {item.label}
                     </Link>

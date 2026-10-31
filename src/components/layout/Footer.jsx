@@ -37,14 +37,14 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
   };
 
   return (
-    <footer 
+    <footer
       id="contact-section"
       suppressHydrationWarning
       className={`${jost.className} relative bg-[#F8F8F5] dark:bg-[#102E24] text-[#173F35] dark:text-[#F5F5F5] pt-16 pb-12 sm:pt-24 sm:pb-16 border-t border-[#E7E7E7] dark:border-[rgba(255,255,255,0.08)] shadow-[0_-10px_40px_rgba(23,63,53,0.01)] select-none overflow-hidden transition-colors duration-300`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-        
-        <motion.div 
+
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -53,20 +53,21 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
         >
           {/* Main Layout Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left Column: Brand, Description, Social Info (4 columns) */}
             <motion.div variants={itemVariants} className="lg:col-span-4 flex flex-col items-center lg:items-start space-y-6 text-center lg:text-left">
               {/* Logo TaniCo */}
-              <div 
+              <div
                 onClick={onNavigateToAdmin}
-                className="cursor-pointer group flex flex-col items-center lg:items-start"
+                className="cursor-pointer group flex items-center justify-center lg:justify-start"
               >
-                <h3 className="text-[26px] font-semibold tracking-tight text-[#173F35] dark:text-[#F5F5F5] transition-opacity duration-300 group-hover:opacity-85 leading-none">
-                  {data.logoText || "TaniCo"}
-                </h3>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[#4D8B55] block mt-2 font-medium">
-                  Pure Organic Archive
-                </span>
+                <img
+                  src="public/images/logo-tanico.png"
+                  alt="TaniCo Pure Harvest"
+                  className="h-11 sm:h-12 w-auto object-contain transition-opacity duration-300 group-hover:opacity-85"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
 
               {/* Deskripsi Singkat */}
@@ -99,11 +100,11 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
             </motion.div>
 
             {/* Right Column: Dynamic Editorial Grid (8 columns) */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 text-center lg:text-left w-full"
             >
-              
+
               {/* Kolom 1: Company */}
               <div className="space-y-4 text-center lg:text-left">
                 <h4 className="text-[15px] sm:text-[16px] font-semibold text-[#173F35] dark:text-[#F5F5F5] tracking-tight">
@@ -114,7 +115,7 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
                     { label: 'Tentang Kami', href: '/tentang-kami' }
                   ].map((link, i) => (
                     <li key={i}>
-                      <Link 
+                      <Link
                         href={link.href}
                         prefetch={true}
                         className="text-[13px] sm:text-[14px] font-normal text-[#666666] dark:text-[#F5F5F5]/70 hover:text-[#174C3C] dark:hover:text-[#F5F5F5] inline-block transition-colors duration-200"
@@ -141,7 +142,7 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
                     { label: 'Paket Hemat & Bundel', href: '/produk?category=paket-hemat' }
                   ].map((link, i) => (
                     <li key={i}>
-                      <Link 
+                      <Link
                         href={link.href}
                         prefetch={true}
                         className="text-[13px] sm:text-[14px] font-normal text-[#666666] dark:text-[#F5F5F5]/70 hover:text-[#174C3C] dark:hover:text-[#F5F5F5] inline-block transition-colors duration-200"
@@ -165,7 +166,7 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
                     { label: 'Basis Pengetahuan', href: '/knowledge-base' }
                   ].map((link, i) => (
                     <li key={i}>
-                      <Link 
+                      <Link
                         href={link.href}
                         prefetch={true}
                         className="text-[13px] sm:text-[14px] font-normal text-[#666666] dark:text-[#F5F5F5]/70 hover:text-[#174C3C] dark:hover:text-[#F5F5F5] inline-block transition-colors duration-200"
@@ -182,13 +183,13 @@ function Footer({ onNavigateToAdmin, settings = {} }) {
           </div>
 
           {/* Thin Editorial Divider */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="w-full h-[1px] bg-[#E7E7E7] dark:bg-[rgba(255,255,255,0.08)]"
           />
 
           {/* Bottom Copyright Block */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4 text-[12px] sm:text-[13px] text-[#666666] dark:text-[#F5F5F5]/60 font-normal"
           >
