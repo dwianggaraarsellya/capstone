@@ -1,0 +1,8 @@
+{
+  "name": "Tanico",
+  "description": "Tanico Platform",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": [
+    ""
+  ]
+}
