@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
+import Image from 'next/image'; 
 import { ShieldCheck, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
 import { useLayout } from '@/context/LayoutContext';
 
@@ -82,15 +83,17 @@ export default function AdminLoginPage() {
         transition={{ duration: 0.4 }}
         className="sm:mx-auto w-full max-w-md text-center"
       >
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#174C3C] text-white shadow-lg mb-4">
-          <ShieldCheck className="w-8 h-8" />
-        </div>
-        <h1 className="font-sans text-2xl sm:text-3xl tracking-widest font-bold text-[#174C3C]">
-          TaniCo
-        </h1>
-        <p className="mt-1 font-sans text-xs tracking-widest text-[#4D8B55] font-semibold">
-          Konsol Administratif
-        </p>
+     <div className="flex items-center justify-center">
+<Image
+                src="/images/logo-tanico.png"
+                alt="TaniCo"
+                width={140}
+                height={44}
+                priority
+                referrerPolicy="no-referrer"
+                className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              />
+              </div>
       </motion.div>
 
       <motion.div
@@ -131,7 +134,7 @@ export default function AdminLoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@tanico.id"
+                  placeholder="nama@tanico.id"
                   className="w-full bg-[#FCFCFC] text-xs text-[#202020] pl-10 pr-3.5 py-3 border border-[#DDE9DF] rounded-xl focus:outline-none focus:border-[#174C3C] focus:bg-white transition-all duration-200"
                 />
               </div>
