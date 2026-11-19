@@ -1063,8 +1063,12 @@ export default function AdminHomepagePage() {
     <div className="space-y-6">
       <form onSubmit={handleHomepageCmsSave} className="space-y-8 text-left w-full">
           <div>
-            <span className="font-sans text-[10px] tracking-wider text-[#6E9C7C] font-bold block">Manajemen Halaman</span>
-            <h3 className="font-sans text-2xl text-[#174C3C] font-bold mt-1">Homepage CMS Editor</h3>
+            {/* Title */}
+        <div>
+          <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
+            Homepage <span className="italic font-normal text-[#6E9C7C]">CMS</span>
+          </h2>
+        </div>
             <p className="text-xs text-gray-500 mt-1">Konfigurasikan seluruh visual, slogan, deskripsi, tombol, tautan, warna latar belakang, dan status aktif untuk setiap section secara realtime.</p>
           </div>
 
@@ -2108,52 +2112,6 @@ export default function AdminHomepagePage() {
 
                 {/* FORM EDITOR (TOP) */}
                 <div className="w-full space-y-6 pt-2">
-                  <h4 className="font-jost font-bold text-[#12372A] text-xs tracking-wider border-b border-gray-100 pb-2">
-                    Pengaturan Teks & Layout Section Kategori
-                  </h4>
-
-                  {/* Header Text Settings */}
-                  <div className="space-y-1">
-                    <label className="font-jost text-[9px] tracking-wider text-gray-400 block font-bold">Judul Kecil (Badge)</label>
-                    <input
-                      type="text"
-                      value={homepageCmsForm.categories?.badge || ''}
-                      onChange={(e) => setHomepageCmsForm(prev => ({
-                        ...prev,
-                        categories: { ...prev.categories, badge: e.target.value }
-                      }))}
-                      className="w-full text-xs p-3 bg-white border border-gray-200 outline-none rounded-lg font-medium text-gray-800"
-                      placeholder="Masukkan judul kecil untuk section Kategori"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="font-jost text-[9px] tracking-wider text-gray-400 block font-bold">Judul Utama</label>
-                    <input
-                      type="text"
-                      value={homepageCmsForm.categories?.title || ''}
-                      onChange={(e) => setHomepageCmsForm(prev => ({
-                        ...prev,
-                        categories: { ...prev.categories, title: e.target.value }
-                      }))}
-                      className="w-full text-xs p-3 bg-white border border-gray-200 outline-none rounded-lg font-medium text-gray-800"
-                      placeholder="Masukkan judul utama, misal: Temukan Hasil Bumi untuk Setiap Kebutuhan"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="font-jost text-[9px] tracking-wider text-gray-400 block font-bold">Deskripsi</label>
-                    <textarea
-                      rows={3}
-                      value={homepageCmsForm.categories?.description || ''}
-                      onChange={(e) => setHomepageCmsForm(prev => ({
-                        ...prev,
-                        categories: { ...prev.categories, description: e.target.value }
-                      }))}
-                      className="w-full text-xs p-3 bg-white border border-gray-200 outline-none rounded-lg text-gray-700"
-                      placeholder="Tulis deskripsi singkat untuk section Kategori, misal: Dipilih langsung dari petani lokal Bangka..."
-                    />
-                  </div>
 
                   {/* Tampilan & Limit */}
                   <div className="border border-gray-100 p-4 rounded-xl bg-gray-50/40 space-y-4">
@@ -2603,56 +2561,10 @@ export default function AdminHomepagePage() {
 
                 {/* FORM EDITOR (TOP) */}
                 <div className="w-full space-y-6">
-                  {/* SECTION 1: KONTEN */}
-                  <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
-                    <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Pengaturan Konten</h5>
-                    
-                    <div className="space-y-1">
-                      <label className="font-jost text-[9px] tracking-wider text-gray-400 block font-bold">Judul Kecil (Badge)</label>
-                      <input
-                        type="text"
-                        value={homepageCmsForm.featuredProducts?.badge || ''}
-                        onChange={(e) => setHomepageCmsForm(prev => ({
-                          ...prev,
-                          featuredProducts: { ...prev.featuredProducts, badge: e.target.value }
-                        }))}
-                        className="w-full text-xs p-2.5 bg-white border border-gray-200 outline-none rounded-lg"
-                        placeholder="Masukkan judul kecil, misal: REKOMENDASI TERPOPULER"
-                      />
-                    </div>
-
-                      <div className="space-y-1">
-                        <label className="font-jost text-[9px] tracking-wider text-gray-400 block font-bold">Judul Utama</label>
-                        <input
-                          type="text"
-                          value={homepageCmsForm.featuredProducts?.title || ''}
-                          onChange={(e) => setHomepageCmsForm(prev => ({
-                            ...prev,
-                            featuredProducts: { ...prev.featuredProducts, title: e.target.value }
-                          }))}
-                          className="w-full text-xs p-2.5 bg-white border border-gray-200 outline-none rounded-lg"
-                          placeholder="Masukkan judul utama, misal: Produk Unggulan Hasil Bumi"
-                        />
-                      </div>
-
-                      <div className="space-y-1">
-                        <label className="font-jost text-[9px] tracking-wider text-gray-400 block font-bold">Deskripsi</label>
-                        <textarea
-                          rows={2}
-                          value={homepageCmsForm.featuredProducts?.description || ''}
-                          onChange={(e) => setHomepageCmsForm(prev => ({
-                            ...prev,
-                            featuredProducts: { ...prev.featuredProducts, description: e.target.value }
-                          }))}
-                          className="w-full text-xs p-2.5 bg-white border border-gray-200 outline-none rounded-lg"
-                          placeholder="Tulis deskripsi singkat untuk section produk…"
-                        />
-                      </div>
-                    </div>
 
                     {/* SECTION 2: LATAR BELAKANG */}
                     <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
-                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">02. Latar Belakang (Background)</h5>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Latar Belakang (Background)</h5>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
@@ -2697,7 +2609,7 @@ export default function AdminHomepagePage() {
 
                     {/* SECTION 3: LAYOUT */}
                     <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
-                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">03. Layout & Padding</h5>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Layout & Padding</h5>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
@@ -2736,7 +2648,7 @@ export default function AdminHomepagePage() {
 
                     {/* SECTION 4: HOVER & SLIDER */}
                     <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
-                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">04. Efek Hover & Pengaturan Slider</h5>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Efek Hover & Pengaturan Slider</h5>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
@@ -2824,7 +2736,7 @@ export default function AdminHomepagePage() {
 
                     {/* SECTION 5: KARTU PRODUK */}
                     <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
-                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">05. Elemen Kartu Produk</h5>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Elemen Kartu Produk</h5>
                       
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         <label className="flex items-center gap-2 cursor-pointer font-jost text-[11px] text-gray-600 font-medium">
@@ -2885,7 +2797,7 @@ export default function AdminHomepagePage() {
 
                     {/* SECTION 6: TOMBOL CTA */}
                     <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
-                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">06. Tombol Aksi (CTA)</h5>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Tombol Aksi (CTA)</h5>
                       
                       <div className="space-y-3">
                         <label className="flex items-center gap-2 cursor-pointer font-jost text-[11px] text-gray-600 font-medium">
@@ -2937,7 +2849,7 @@ export default function AdminHomepagePage() {
                     {/* SECTION 7: INTERACTIVE PRODUCT PRIORITY SYSTEM */}
                     <div className="p-4 border border-gray-100 rounded-xl bg-gray-50/40 space-y-4">
                       <div className="space-y-1 border-b border-gray-100 pb-2">
-                        <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide">07. Pilih & Urutkan Produk Unggulan</h5>
+                        <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide">Pilih & Urutkan Produk Unggulan</h5>
                         <p className="text-[10px] text-gray-500 font-jost leading-relaxed">
                           Daftar di bawah menampilkan semua produk dari database Anda. Centang produk untuk menambahkannya ke list **Selected Product IDs** dan **Order** di CMS. Atur urutan visual menggunakan tombol (▲/▼) secara dinamis tanpa mempengaruhi data produk master.
                         </p>
@@ -3297,59 +3209,10 @@ export default function AdminHomepagePage() {
 
                 {/* FORM EDITOR (TOP) */}
                 <div className="w-full space-y-6">
-                  {/* A. INFORMASI SECTION */}
-                  <div className="border border-gray-100 p-4 rounded-xl bg-gray-50/30 space-y-4">
-                    <div className="text-[10px] font-jost font-bold text-gray-400 tracking-widest border-b border-gray-100 pb-1.5">A. Informasi Section</div>
-                    <div className="space-y-3">
-                      <div className="space-y-1">
-                        <label className="font-jost text-[9px] tracking-wider text-gray-500 block font-bold">Judul Kecil (Badge) *</label>
-                        <input
-                          type="text"
-                          required
-                          value={homepageCmsForm.gallery?.badge || ''}
-                          onChange={(e) => setHomepageCmsForm(prev => ({
-                            ...prev,
-                            gallery: { ...prev.gallery, badge: e.target.value }
-                          }))}
-                          className="w-full text-xs p-3 bg-white border border-gray-200 outline-none rounded-lg focus:border-[#12372A]"
-                          placeholder="Masukkan badge, misal: GALERI TANI"
-                        />
-                      </div>
-                    </div>
-
-                      <div className="space-y-1">
-                        <label className="font-jost text-[9px] tracking-wider text-gray-500 block font-bold">Judul Utama *</label>
-                        <input
-                          type="text"
-                          required
-                          value={homepageCmsForm.gallery?.title || ''}
-                          onChange={(e) => setHomepageCmsForm(prev => ({
-                            ...prev,
-                            gallery: { ...prev.gallery, title: e.target.value }
-                          }))}
-                          className="w-full text-xs p-3 bg-white border border-gray-200 outline-none rounded-lg focus:border-[#12372A]"
-                          placeholder="Masukkan judul utama, misal: Dokumentasi Kebun & Aktivitas"
-                        />
-                      </div>
-
-                      <div className="space-y-1">
-                        <label className="font-jost text-[9px] tracking-wider text-gray-500 block font-bold">Deskripsi</label>
-                        <textarea
-                          rows={2}
-                          value={homepageCmsForm.gallery?.description || ''}
-                          onChange={(e) => setHomepageCmsForm(prev => ({
-                            ...prev,
-                            gallery: { ...prev.gallery, description: e.target.value }
-                          }))}
-                          className="w-full text-xs p-3 bg-white border border-gray-200 outline-none rounded-lg text-gray-700 leading-relaxed focus:border-[#12372A]"
-                          placeholder="Tulis deskripsi singkat galeri…"
-                        />
-                      </div>
-                    </div>
 
                     {/* B. LATAR BELAKANG */}
                     <div className="border border-gray-100 p-4 rounded-xl bg-gray-50/30 space-y-4">
-                      <div className="text-[10px] font-jost font-bold text-gray-400 tracking-widest border-b border-gray-100 pb-1.5">B. Latar Belakang (Background)</div>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Latar Belakang (Background)</h5>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
                           <label className="font-jost text-[9px] tracking-wider text-gray-500 block font-bold">Warna Latar Belakang</label>
@@ -3431,7 +3294,7 @@ export default function AdminHomepagePage() {
 
                     {/* C. LAYOUT */}
                     <div className="border border-gray-100 p-4 rounded-xl bg-gray-50/30 space-y-4">
-                      <div className="text-[10px] font-jost font-bold text-gray-400 tracking-widest border-b border-gray-100 pb-1.5">C. Tata Letak (Layout)</div>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Tata Letak</h5>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
@@ -3523,7 +3386,7 @@ export default function AdminHomepagePage() {
 
                     {/* D. CARD COLORS */}
                     <div className="border border-gray-100 p-4 rounded-xl bg-gray-50/30 space-y-4">
-                      <div className="text-[10px] font-jost font-bold text-gray-400 tracking-widest border-b border-gray-100 pb-1.5">D. Tampilan Kartu (Card Colors)</div>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Tampilan Kartu</h5>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
                           <label className="font-jost text-[9px] tracking-wider text-gray-500 block font-bold">Latar Belakang Kartu</label>
@@ -3579,7 +3442,7 @@ export default function AdminHomepagePage() {
 
                     {/* E. TOGGLES */}
                     <div className="border border-gray-100 p-4 rounded-xl bg-gray-50/30 space-y-4">
-                      <div className="text-[10px] font-jost font-bold text-gray-400 tracking-widest border-b border-gray-100 pb-1.5">E. Fitur & Interaksi (Toggles)</div>
+                      <h5 className="font-jost font-bold text-[#12372A] text-xs tracking-wide border-b border-gray-100 pb-2">Fitur Interaksi</h5>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1">
                           <label className="font-jost text-[8px] tracking-wider text-gray-400 block font-bold font-jost">Efek Pijar (Glow Effect)</label>
@@ -3613,14 +3476,6 @@ export default function AdminHomepagePage() {
                           </label>
                         </div>
                       </div>
-                    </div>
-
-                    {/* GALERI ITEM MANAGEMENT REMINDER */}
-                    <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl text-xs text-emerald-800 space-y-1.5">
-                      <p className="font-jost font-bold tracking-wider text-[10px]">💡 Manajemen Koleksi Foto Galeri</p>
-                      <p className="text-[11px] leading-relaxed text-emerald-700/90 font-jost">
-                        Formulir di atas berfungsi untuk mengatur estetika visual section (judul, latar belakang, efek, limit, dll). Untuk menambah, mengubah deskripsi, atau menghapus foto-foto spesifik dari database Galeri, silakan gunakan menu **Gallery Management** pada sidebar admin kiri.
-                      </p>
                     </div>
                   </div>
 

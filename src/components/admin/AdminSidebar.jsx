@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   LayoutDashboard, 
@@ -132,12 +133,15 @@ export default function AdminSidebar({
       {/* Header Brand */}
       <div className="p-6 border-b border-white/5 flex items-center justify-between">
         <div className="flex flex-col">
-          <span className="font-sans text-lg tracking-widest  font-bold text-white">
-            TaniCo
-          </span>
-          <span className="font-sans text-[7px] tracking-widest  text-[#E8F3EC] opacity-70 -mt-1 block">
-            Admin Console
-          </span>
+          <Image
+                          src="/images/tanico-logo-footer.png"
+                          alt="TaniCo Pure Harvest"
+                          width={140}
+                          height={44}
+                          priority
+                          referrerPolicy="no-referrer"
+                          className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-90 transition-opacity"
+                        />
         </div>
         <button 
           onClick={() => setIsOpen(false)}

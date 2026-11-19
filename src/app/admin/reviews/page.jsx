@@ -61,8 +61,12 @@ export default function AdminReviewsPage() {
       
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <span className="font-sans text-[9px] sm:text-[10px] tracking-wider text-[#6E9C7C] font-bold block">KURASI</span>
-          <h3 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">Moderasi Review Produk</h3>
+          {/* Title */}
+        <div>
+          <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
+            Review <span className="italic font-normal text-[#6E9C7C]">Produk</span>
+          </h2>
+        </div>
         </div>
         
         {/* Filter Buttons with live counts */}

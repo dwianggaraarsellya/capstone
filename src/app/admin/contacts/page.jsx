@@ -51,10 +51,12 @@ export default function AdminContactsPage() {
   return (
     <div className="space-y-6 text-left font-sans">
       
-      <div>
-        <span className="font-sans text-[9px] sm:text-[10px] tracking-wider text-[#6E9C7C] font-bold block">KOTAK SURAT</span>
-        <h3 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">Pesan Kontak Masuk</h3>
-      </div>
+      {/* Title */}
+        <div>
+          <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
+            Pesanan <span className="italic font-normal text-[#6E9C7C]">Kotak Masuk</span>
+          </h2>
+        </div>
 
       <div className="space-y-3.5 text-left">
         {isLoadingContacts ? (

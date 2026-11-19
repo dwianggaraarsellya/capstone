@@ -174,9 +174,6 @@ export default function StockManager({ initialTab = null }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <span className="text-[10px]  tracking-wider text-gray-500 font-semibold block">
-            MANAJEMEN PERSEDIAAN
-          </span>
           <h1 className="text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
             Pengelolaan <span className="italic font-normal text-[#6E9C7C]">Stok</span>
           </h1>

@@ -137,12 +137,11 @@ export default function AdminDashboardPage() {
       {/* 1. Header & Quick Action Buttons */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <span className="text-[10px] tracking-wider text-gray-500 font-semibold block">
-            Konsol Operasional
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mt-0.5">
-            Dashboard Operasional
+        <div>
+          <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
+            Dashboard<span className="italic font-normal text-[#6E9C7C]"> Operasional</span>
           </h2>
+        </div>
           <p className="text-xs text-gray-500 mt-1">
             Pantau status pesanan langsung, inventaris panen, dan penanganan harian.
           </p>

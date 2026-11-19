@@ -112,15 +112,19 @@ export default function AdminCartPage() {
   return (
     <div className="space-y-6 text-left font-sans">
       <div>
-        <span className="font-sans text-[10px] tracking-wider text-[#6E9C7C] font-bold block">ANALYTICS</span>
-        <h3 className="font-sans text-2xl text-[#174C3C] font-bold mt-1">Minat Keranjang Belanja</h3>
+        {/* Title */}
+        <div>
+          <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
+            Minat<span className="italic font-normal text-[#6E9C7C]"> Keranjang Belanja</span>
+          </h2>
+        </div>
       </div>
 
       <div className="bg-white border border-[#DDE9DF] p-6 rounded-2xl shadow-2xs space-y-4">
         <div className="flex justify-between items-center">
           <h4 className="font-sans text-sm text-[#174C3C] font-bold">Estimasi Jumlah Porsi di Tas Belanja</h4>
           {cartItemsData.length > 0 && (
-            <span className="text-[10px] text-[#174C3C] bg-[#ECF6ED] px-2.5 py-1 rounded-full font-bold">
+            <span className="text-[10px] text-[#174C3C] px-2.5 py-1 font-bold">
               {totalCartCount} Porsi Aktif
             </span>
           )}

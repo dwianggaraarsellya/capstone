@@ -188,9 +188,11 @@ export default function AdminGalleryPage() {
   return (
     <div className="space-y-6 text-left font-sans">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        {/* Title */}
         <div>
-          <span className="font-sans text-[10px] tracking-wider text-[#6E9C7C] font-bold block">MEDIA</span>
-          <h3 className="font-sans text-2xl text-[#174C3C] font-bold mt-1">Galeri Panen Kebun</h3>
+          <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
+            Galeri <span className="italic font-normal text-[#6E9C7C]">Panen Kebun</span>
+          </h2>
         </div>
         
         <button

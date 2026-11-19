@@ -105,7 +105,6 @@ export default function AdminOrdersPage() {
       
       {/* Heading */}
       <div>
-        <span className="font-sans text-[9px] sm:text-[10px] tracking-wider text-[#6E9C7C] font-bold block">DAFTAR TRANSAKSI</span>
         <h2 className="font-sans text-xl sm:text-2xl text-[#174C3C] font-bold mt-0.5">
           Kelola <span className="italic font-normal text-[#6E9C7C]">Pesanan Masuk</span>
         </h2>
