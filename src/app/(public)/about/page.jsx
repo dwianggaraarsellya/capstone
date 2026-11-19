@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 import PageLayoutWrapper from '@/components/layout/PageLayoutWrapper';
@@ -7,7 +6,7 @@ const COMPANY_PROFILE_SECTIONS = [
   {
     id: 'cerita-tanico',
     title: 'Cerita TaniCo',
-    image: '/images/about/perkebunan.webp',
+    image: '/images/about/panen-selada-kelompok-tani.webp',
     imageAlt: 'Kebun pertanian mitra lokal TaniCo',
     summary:
       'TaniCo adalah platform pasar pertanian yang hadir sebagai jembatan langsung antara petani lokal dengan meja makan keluarga Indonesia. Kami berangkat dari kebutuhan akan akses pangan segar yang lebih transparan sekaligus memberikan apresiasi yang adil bagi para petani.',
@@ -20,7 +19,7 @@ const COMPANY_PROFILE_SECTIONS = [
   {
     id: 'komitmen-kami',
     title: 'Komitmen Kami',
-    image: '/images/about/value-kesegaran.webp',
+    image: '/images/about/panen-selada-mulsa.webp',
     imageAlt: 'Komitmen kesegaran dan kualitas hasil panen TaniCo',
     summary:
       'Kepercayaan pelanggan dibangun melalui konsistensi mutu di setiap ikat sayuran yang dikirimkan. Kami menerapkan pengawasan berlapis pada empat pilar utama operasional harian TaniCo.',
@@ -46,7 +45,7 @@ const COMPANY_PROFILE_SECTIONS = [
   {
     id: 'perjalanan-produk',
     title: 'Perjalanan Produk',
-    image: '/images/about/value-petani.webp',
+    image: '/images/about/petani-hidroponik-el-nino.webp',
     imageAlt: 'Perjalanan hasil panen dari petani hingga ke pelanggan TaniCo',
     summary:
       'Setiap produk TaniCo melewati alur penanganan yang terencana dan ringkas agar waktu dari pemetikan di kebun hingga diterima pelanggan tetap singkat dan higienis.',
@@ -116,7 +115,7 @@ export default function TentangKamiPage() {
             {/* Static image from public folder - not from API */}
             <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xs border border-[#DDE9DF] bg-[#174C3C]/10 flex items-center justify-center">
               <Image
-                src="/images/about/perkebunan.webp"
+                src="/images/about/petik-tomat-kebun.webp"
                 alt="Perkebunan TaniCo"
                 width={800}
                 height={600}
@@ -161,9 +160,6 @@ export default function TentangKamiPage() {
         {/* Company Profile Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
           <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
-            <p className="text-xs sm:text-sm font-semibold tracking-wide text-[#1B4D3E]">
-              Profil Perusahaan TaniCo
-            </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-sans tracking-tight text-[#1B4D3E]">
               Mengenal Lebih Dekat Nilai, Komitmen, dan Alur Panen Kami
