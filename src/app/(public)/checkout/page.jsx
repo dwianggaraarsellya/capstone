@@ -318,7 +318,7 @@ function CheckoutContent() {
           </button>
 
           {isBuyNow && (
-            <span className="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold rounded-full">
+            <span className="px-3 py-1 text-[#1B4D3E] text-[11px] font-bold rounded-full">
               Mode Beli Sekarang (1 Produk)
             </span>
           )}
@@ -516,7 +516,7 @@ function CheckoutContent() {
             <div className="border-b border-[#DDE9DF] pb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold font-sans text-[#1B4D3E]">Ringkasan Pesanan</h2>
               {isBuyNow && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                <span className="text-[10px] font-bold text-[#1B4D3E]">
                   Pembelian Langsung
                 </span>
               )}
